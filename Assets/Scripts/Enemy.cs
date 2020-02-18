@@ -14,10 +14,10 @@ public class Enemy : MonoBehaviour {
     }
 
     void Update() {
-        Vector3 direction = target.position - transform.position;
-        transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
+        Vector3 direction = target.position - this.transform.position;
+        this.transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
 
-        if (Vector3.Distance(transform.position, target.position) <= 0.2f)
+        if (Vector3.Distance(this.transform.position, target.position) <= 0.2f)
         {
             GetNextWaypoint();
         }
