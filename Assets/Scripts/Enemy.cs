@@ -2,21 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
-{
+public class Enemy : MonoBehaviour {
 
     public float speed = 10f;
 
     private Transform target;
     private int waypointIndex = 0;
 
-    void Start()
-    {
+    void Start() {
         target = Waypoints.points[0];
     }
 
-    void Update()
-    {
+    void Update() {
         Vector3 direction = target.position - transform.position;
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
 
@@ -26,8 +23,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void GetNextWaypoint()
-    {
+    void GetNextWaypoint() {
         if(waypointIndex >= Waypoints.points.Length - 1)
         {
             Destroy(gameObject);
