@@ -6,7 +6,7 @@ public class GameMaster : MonoBehaviour {
 
     public Transform enemyPrefab;
 
-    public  float   wavesInterval = 2f;
+    public float   wavesInterval = 2f;
     public float   countdown = 1f;
     public int     wavesCount = 5;
     
