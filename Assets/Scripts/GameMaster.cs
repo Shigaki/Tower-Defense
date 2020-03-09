@@ -6,25 +6,27 @@ public class GameMaster : MonoBehaviour {
 
     public Transform enemyPrefab;
 
-    public float   wavesInterval = 2f;
+    public float   wavesInterval = 5f;
     public float   countdown = 1f;
-    public int     wavesCount = 5;
+    public int     waveIndex = 0;
     
     void Update() {
         if (countdown <= 0f) {
-            SpawnWave();
+            StartCoroutine(SpawnWave());
             countdown = wavesInterval;
         }
 
-        if (wavesCount > 0)
         countdown -= Time.deltaTime;
     }
 
-    void SpawnWave() {
+    IEnumerator SpawnWave() {
+        
+        if(waveIndex < 5)
+            waveIndex++;
 
-        if (wavesCount > 0) {
+        for (int i = 0; i < waveIndex; i++) {
             SpawnEnemy();
-            wavesCount--;
+            yield return new WaitForSeconds(0.5f);
         }
 
     }
